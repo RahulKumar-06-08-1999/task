@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup Page</title>
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="signup-error" style="color: red; display: none;"></div>
+  <div class="form">
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Sign Up</a></li>
+      <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="signup">   
+        <h1>Sign Up for Free</h1>
+        <form id="signup-form" action="http://localhost:3000/api/v1/auth/register" method="post">
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <input id="firstName" type="text" name="firstName" required autocomplete="off" />
+            </div>
+            <div class="field-wrap">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input id="lastName" type="text" name="lastName" required autocomplete="off"/>
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input id="signup-email" type="email" name="email" required autocomplete="off">
+          </div>
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input id="signup-password" type="password" name="password" required autocomplete="off">
+          </div>
+          <button type="submit" class="button button-block">Get Started</button>
+        </form>
+      </div>
+      <div id="login">   
+        <h1>Welcome Back!</h1>
+        <form id="login-form" action="http://localhost:3000/api/v1/auth/login" method="post">
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input id="login-email" type="email" name="email" required autocomplete="off">
+          </div>
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input id="login-password" type="password" name="password" required autocomplete="off">
+          </div>
+          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <button class="button button-block">Log In</button>
+
+          <!-- Popup Modal for User Information -->
+          <div id="user-info-modal" style="display:none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000;">
+            <div style="background: rgb(167, 240, 197); width: 300px; padding: 20px; margin: 100px auto; text-align: center;">
+              <h2>User Information</h2>
+              <div id="user-info-content"></div>
+              <button onclick="closeUserInfoModal()">Close</button>
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+    </div><!-- tab-content -->
+  </div> <!-- /form -->
+
+  <!-- Popup Modal -->
+  <div id="success-modal" style="display:none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000;">
+    <div style="background: rgb(75, 238, 143); width: 300px; padding: 20px; margin: 100px auto; text-align: center;">
+      <h2>Registration Successful</h2>
+      <p>Your account has been created successfully.</p>
+      <button onclick="showLogin()">Close</button>
+    </div>
+  </div>
+
+
+  <!-- Link to jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Link to your JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
